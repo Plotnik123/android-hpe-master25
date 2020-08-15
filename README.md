@@ -1,3 +1,7 @@
+## О приложении
+Приложение для придания формы прическе.
+
+
 
 ## Credits
 This app is based on this work - [android-hpe](https://github.com/beraldofilippo/android-hpe).

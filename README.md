@@ -1,6 +1,6 @@
 
 ## Credits
-This app was developed as part of my MSc thesis in Computer Engineering at the University of Padua, Italy. Huge thanks to the Centro di Sonologia Computazionale (CSC) of the University of Padua [http://smc.dei.unipd.it/](http://smc.dei.unipd.it/).
+This app was developed as part of android-hpe(https://github.com/beraldofilippo/android-hpe)
 
 This app, as well as its C++ counterpart, replicates the great job done in [dlib-android-app](https://github.com/tzutalin/dlib-android-app), please refer to this project for some additional info.
 

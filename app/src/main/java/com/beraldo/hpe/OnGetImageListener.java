@@ -229,6 +229,12 @@ public class OnGetImageListener implements OnImageAvailableListener {
             return;
         }
 
+
+
+
+
+
+        
         mRGBframeBitmap.setPixels(mRGBBytes, 0, mPreviewWdith, 0, 0, mPreviewWdith, mPreviewHeight);
         drawUnmirroredRotatedBitmap(mRGBframeBitmap, mRGBrotatedBitmap, 90);
 

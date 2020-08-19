@@ -36,12 +36,17 @@ import hugo.weaving.DebugLog;
 
 @EActivity(R.layout.activity_main)
 public class MainActivity extends AppCompatActivity {
+/*
+    Camera camera;
+    FrameLayout frameLayout;
+    ShowCamera showCamera;
+    private GLSurfaceView glView;
+*/
     private static final int REQUEST_CODE_PERMISSION = 2;
     private static final String TAG = "MainActivity";
 
     public static int mode = Constants.MODE_ITERATIVE;
     public static boolean saveFile = false;
-
 
     // Storage Permissions
     private static String[] PERMISSIONS_REQ = {

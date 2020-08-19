@@ -53,12 +53,13 @@ public class OnGetImageListener implements OnImageAvailableListener {
     private int mPreviewHeight = 0;
     private byte[][] mYUVBytes;
     private int[] mRGBBytes = null;
-    private Bitmap mRGBframeBitmap = null;
-    private Bitmap mRGBrotatedBitmap = null;
+    public Bitmap mRGBframeBitmap = null;
+    public Bitmap mRGBrotatedBitmap = null;
     //private Bitmap mCroppedBitmap = null;
 
     private boolean mIsComputing = false;
     private Handler mInferenceHandler;
+
 
     private Context mContext;
     private HeadPoseDetector mHeadPoseDetector;
@@ -162,10 +163,10 @@ public class OnGetImageListener implements OnImageAvailableListener {
 
     private void drawUnmirroredRotatedBitmap(final Bitmap src, final Bitmap dst, final int rotation) {
         final Matrix matrix = new Matrix();
-        //matrix.postTranslate(-dst.getWidth() / 2.0f, -dst.getHeight() / 2.0f);
-        //matrix.postRotate(rotation);
+        matrix.postRotate(-90);
+        matrix.postTranslate(0, 480);
         //matrix.setScale(-1, 1);
-        //matrix.postTranslate(dst.getWidth(), 0);
+       // matrix.postTranslate(dst.getWidth(), 0);
 
         final Canvas canvas = new Canvas(dst);
         canvas.drawBitmap(src, matrix, null);
@@ -200,7 +201,7 @@ public class OnGetImageListener implements OnImageAvailableListener {
                 Log.d(TAG, String.format("Initializing at size %dx%d", mPreviewWdith, mPreviewHeight));
                 mRGBBytes = new int[mPreviewWdith * mPreviewHeight];
                 mRGBframeBitmap = Bitmap.createBitmap(mPreviewWdith, mPreviewHeight, Config.ARGB_8888);
-                mRGBrotatedBitmap = Bitmap.createBitmap(mPreviewWdith, mPreviewHeight, Config.ARGB_8888);
+                mRGBrotatedBitmap = Bitmap.createBitmap(mPreviewHeight, mPreviewWdith, Config.ARGB_8888);
                 //mCroppedBitmap = Bitmap.createBitmap(INPUT_SIZE, INPUT_SIZE, Config.ARGB_8888);
 
                 mYUVBytes = new byte[planes.length][];
@@ -229,7 +230,8 @@ public class OnGetImageListener implements OnImageAvailableListener {
         }
 
         mRGBframeBitmap.setPixels(mRGBBytes, 0, mPreviewWdith, 0, 0, mPreviewWdith, mPreviewHeight);
-        drawUnmirroredRotatedBitmap(mRGBframeBitmap, mRGBrotatedBitmap, 0);
+        drawUnmirroredRotatedBitmap(mRGBframeBitmap, mRGBrotatedBitmap, 90);
+
         //drawResizedBitmap(mRGBframeBitmap, mCroppedBitmap);
 
         mInferenceHandler.post(

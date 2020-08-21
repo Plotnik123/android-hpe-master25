@@ -14,6 +14,7 @@ import android.graphics.ImageFormat;
 import android.graphics.Matrix;
 import android.graphics.RectF;
 import android.graphics.SurfaceTexture;
+import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
 import android.hardware.camera2.CameraCharacteristics;
@@ -40,6 +41,7 @@ import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
@@ -51,12 +53,15 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
 
-
 import com.beraldo.hpe.utils.XMLReader;
 import com.beraldo.hpe.view.AutoFitTextureView;
 import hugo.weaving.DebugLog;
 public class CameraConnectionFragment extends Fragment {
     private GLSurfaceView glView;
+    Camera camera;
+    FrameLayout frameLayout;
+    ShowCamera showCamera;
+
 
     /**
      * The camera preview size will be chosen to be the smallest frame by pixel size capable of
@@ -351,8 +356,10 @@ public class CameraConnectionFragment extends Fragment {
         mResultsView = (TextView) view.findViewById(R.id.results_tv);
         mInfoView = (TextView) view.findViewById(R.id.info_tv);
 
-
-
+        frameLayout = (FrameLayout) view.findViewById(R.id.frameLayout);
+        camera = Camera.open();
+        showCamera = new ShowCamera(this,camera);
+        frameLayout.addView(showCamera);
 
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -380,7 +387,6 @@ public class CameraConnectionFragment extends Fragment {
     public void onResume() {
         super.onResume();
         startBackgroundThread();
-
 
         // When the screen is turned off and turned back on, the SurfaceTexture is already
         // available, and "onSurfaceTextureAvailable" will not be called. In that case, we can open

@@ -60,7 +60,6 @@ public class OnGetImageListener implements OnImageAvailableListener {
     private boolean mIsComputing = false;
     private Handler mInferenceHandler;
 
-
     private Context mContext;
     private HeadPoseDetector mHeadPoseDetector;
     private TextView mPerformanceView;
@@ -229,12 +228,6 @@ public class OnGetImageListener implements OnImageAvailableListener {
             return;
         }
 
-
-
-
-
-
-        
         mRGBframeBitmap.setPixels(mRGBBytes, 0, mPreviewWdith, 0, 0, mPreviewWdith, mPreviewHeight);
         drawUnmirroredRotatedBitmap(mRGBframeBitmap, mRGBrotatedBitmap, 90);
 

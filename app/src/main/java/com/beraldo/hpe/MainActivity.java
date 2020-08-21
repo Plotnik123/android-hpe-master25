@@ -36,12 +36,9 @@ import hugo.weaving.DebugLog;
 
 @EActivity(R.layout.activity_main)
 public class MainActivity extends AppCompatActivity {
-/*
-    Camera camera;
-    FrameLayout frameLayout;
-    ShowCamera showCamera;
-    private GLSurfaceView glView;
-*/
+
+
+
     private static final int REQUEST_CODE_PERMISSION = 2;
     private static final String TAG = "MainActivity";
 
@@ -190,6 +187,9 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         FileUtils.savePreference(this, FileUtils.PARAMS_DIR_PREFS_NAME, params.getAbsolutePath());
+
+
+
     }
 
     @AfterViews

@@ -322,11 +322,6 @@ public class CameraConnectionFragment extends Fragment {
         return new CameraConnectionFragment();
     }
 
-    /**
-     * Shows a {@link Toast} on the UI thread.
-     *
-     * @param text The message to show
-     */
     private void showToast(final String text) {
         final Activity activity = getActivity();
         if (activity != null) {
@@ -343,8 +338,6 @@ public class CameraConnectionFragment extends Fragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
         return inflater.inflate(R.layout.camera_connection_fragment, container, false);
-
-
     }
 
     @Override
@@ -441,7 +434,7 @@ public class CameraConnectionFragment extends Fragment {
                     // garbage capture data.
                     previewSize =
                             chooseOptimalSize(map.getOutputSizes(SurfaceTexture.class), width, height, largest);
-
+//коммент здесь размеры
                     // Set aspect ratio for the textureView in order to comply with landscape mode
                     textureView.setAspectRatio(previewSize.getWidth(), previewSize.getHeight());
 
